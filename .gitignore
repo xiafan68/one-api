@@ -5,3 +5,4 @@ upload
 *.db
 build
 *.db-journal
+__debug_bin*
