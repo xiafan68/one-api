@@ -1,4 +1,4 @@
-package spark_test
+package tests
 
 import (
 	"fmt"
@@ -9,8 +9,11 @@ import (
 	"testing"
 )
 
+const host = "http://localhost:3003"
+
+// 用于复现 sparkdest 模型在高并发时可能出现的 bug，不过这个测试也很难复现出来
 func TestSparkDesk(t *testing.T) {
-	url := "http://100.80.248.106:3000/v1/chat/completions"
+	url := host + "/v1/chat/completions"
 	method := "POST"
 
 	client := &http.Client{}
@@ -35,7 +38,7 @@ func TestSparkDesk(t *testing.T) {
 				fmt.Println(err)
 				return
 			}
-			req.Header.Add("Authorization", "Bearer sk-GKG74fcJAQuHXGRmD08245E9457c4b05989460063fD13366")
+			req.Header.Add("Authorization", "Bearer sk-cZxxu3d73fvZNGouEe8129C7E0254f33932d89E4B5E92b18")
 			req.Header.Add("Content-Type", "application/json")
 
 			res, err := client.Do(req)
